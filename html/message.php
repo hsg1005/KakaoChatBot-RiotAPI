@@ -15,9 +15,10 @@ $sql = "INSERT INTO message_log (message, user_key) VALUES ('$input_message', '$
 // 한글 처리 및 쿼리문 실행
 mysqli_query($conn, 'set names utf8');
 $conn->query($sql);
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//한글 깨짐 방지하는 UTF-8인코딩
-//header("Content-Type: text/html; charset=UTF-8");
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //자신의 api_key
 $api_key = "api_key";
 //대문자를 소문자로 변환
@@ -47,7 +48,7 @@ json_decode(httpGet("https://kr.api.riotgames.com/lol/spectator/v3/active-games/
 $matchlists_by_account =
 json_decode(httpGet("https://kr.api.riotgames.com/lol/match/v3/matchlists/by-account/".$summoner_account_id."?api_key=".$api_key), true);
 
-//가장 최근 게임 날짜 정보
+//최근 게임 날짜 정보
 $timestamp = $matchlists_by_account['matches'][0]['timestamp'];
 $date = date("Y-m-d H:i:s", $timestamp/1000);
 
@@ -72,7 +73,7 @@ else{
 	}
 	$output_message = $output_message. "\n";
 }
-if($summoner_id == "" || $summoner_id['status']['status_code'] == 404 ){
+if($summoners_by_name['status']['status_code'] == 404 ){
 	send_text("존재하지 않는 아이디입니다(헉)");
 }
 $output_message = $output_message. "소환사명 : " . $summoner_name. "\n";
