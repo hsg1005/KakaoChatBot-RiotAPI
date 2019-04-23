@@ -1,10 +1,10 @@
 <?php
 
 
-$servername = "localhost";
-$username = "hsg46961";
-$password = "6351057a1";
-$dbname = "hsg46961";
+$servername = "servername";
+$username = "username";
+$password = "password";
+$dbname = "dbname";
 // DB 접속하기
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 $input = json_decode(file_get_contents('php://input'), true);
@@ -19,7 +19,7 @@ $conn->query($sql);
 //한글 깨짐 방지하는 UTF-8인코딩
 //header("Content-Type: text/html; charset=UTF-8");
 //자신의 api_key
-$api_key = "RGAPI-3016398a-e9eb-45cf-af10-d84030be28e6";
+$api_key = "api_key";
 //대문자를 소문자로 변환
 //양쪽 공백 제거
 $username_tmp = strtolower(trim($input_message));
